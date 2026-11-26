@@ -1,0 +1,6 @@
+release/
+dist-electron/
+versiones/1-version-mac/
+versiones/4-version-web-local-simple/
+.git/
+node_modules/
