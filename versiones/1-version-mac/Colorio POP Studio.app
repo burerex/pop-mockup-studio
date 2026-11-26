@@ -1,0 +1,1 @@
+../../release/mac-arm64/Colorio POP Studio.app

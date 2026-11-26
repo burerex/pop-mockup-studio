@@ -1,0 +1,7 @@
+{
+  "regions": ["iad1"],
+  "rewrites": [
+    { "source": "/landing", "destination": "/index.html" },
+    { "source": "/catalogo", "destination": "/index.html" }
+  ]
+}
