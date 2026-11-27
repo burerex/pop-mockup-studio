@@ -223,3 +223,4 @@ npm run app:build:mac
 | **M8** | 25/11/2026 | Calibración óptica de la logomarca `.colorío` con tilde sobre la letra `ı`. |
 | **M9** | 26/11/2026 | Estandarización de 5 versiones (Prompt Maestro): cierre de servidores huérfanos (0 MB RAM), empaquetado nativo macOS Electron (`.app`, `.dmg`), CI/CD GitHub Actions para Windows (`.exe`) y symlink unificado en `~/Projects/pop-mockup-studio`. |
 | **M10** | 26/11/2026 | Creación del repositorio oficial en GitHub (`burerex/pop-mockup-studio`) y sincronización exitosa a rama `main`. |
+| **M11** | 26/11/2026 | Creación de enlaces directos en el Escritorio (`~/Desktop/Colorio POP Studio`, `~/Desktop/ABRIR_COLORIO_WEBAPPS.command`), lanzador multi-navegador (Chrome, Safari, Brave, Firefox, Edge), accesos directos `.webloc` en `accesos-rapidos/` y portal visual interactivo `PORTAL_ACCESOS_COLORIO.html`. |

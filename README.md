@@ -24,6 +24,24 @@ Permite a clientes, diseñadores y ejecutivos de ventas previsualizar marcas sob
   * *Correo*: `peoplecreativaca@gmail.com`
   * *Clave inicial*: `1234`
 * 🐙 **Repositorio GitHub**: [github.com/burerex/pop-mockup-studio](https://github.com/burerex/pop-mockup-studio)
+* ☁️ **Consola Vercel**: [vercel.com/burerexs-projects/pop-mockup-studio](https://vercel.com/burerexs-projects/pop-mockup-studio)
+* 🚀 **Portal Visual de Enlaces**: Abre [`accesos-rapidos/PORTAL_ACCESOS_COLORIO.html`](./accesos-rapidos/PORTAL_ACCESOS_COLORIO.html)
+
+---
+
+## 🖥️ Accesos Directos en el Escritorio (`~/Desktop`)
+
+Para máxima comodidad, se crearon los siguientes accesos directos en tu **Escritorio de macOS**:
+
+1. **Carpeta Directa**: `~/Desktop/Colorio POP Studio` -> Acceso directo en 1 clic a la carpeta completa del proyecto.
+2. **Lanzador Multi-Navegador**: `~/Desktop/ABRIR_COLORIO_WEBAPPS.command` -> Script interactivo para elegir en qué navegador abrir cualquiera de las aplicaciones:
+   * Google Chrome
+   * Safari
+   * Brave Browser
+   * Firefox
+   * Microsoft Edge
+   * Navegador predeterminado
+3. **Directorio de Accesos Rápidos**: [`accesos-rapidos/`](./accesos-rapidos/) dentro del proyecto, con accesos directos `.webloc` a cada sitio y el portal interactivo [`PORTAL_ACCESOS_COLORIO.html`](./accesos-rapidos/PORTAL_ACCESOS_COLORIO.html).
 
 ---
 

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>.colorío — Portal Central de Accesos y Enlaces</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --violet: #4C1EDB;
+      --violet-hover: #3B16B0;
+      --lime: #C0EE00;
+      --magenta: #F72585;
+      --dark: #0D0E12;
+      --dark-card: #161820;
+      --border: rgba(255, 255, 255, 0.10);
+      --border-hover: rgba(192, 238, 0, 0.40);
+      --text-muted: #94A3B8;
+      --bg: #090A0E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: #FFFFFF;
+      min-height: 100vh;
+      padding: 40px 24px 60px;
+      line-height: 1.5;
+      background-image: radial-gradient(circle at 50% 0%, rgba(76, 30, 219, 0.18) 0%, transparent 60%);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(192, 238, 0, 0.12);
+      border: 1px solid rgba(192, 238, 0, 0.35);
+      color: var(--lime);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+    h1 span.dot { color: var(--violet); }
+    h1 span.tilde { color: var(--magenta); }
+    p.subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    }
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      shrink: 0;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .card-title-group h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+    .card-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+    .tag-live { background: rgba(16, 185, 129, 0.15); color: #10B981; }
+    .tag-admin { background: rgba(247, 37, 133, 0.15); color: #F72585; }
+    .tag-repo { background: rgba(192, 238, 0, 0.15); color: #C0EE00; }
+    .tag-cloud { background: rgba(76, 30, 219, 0.25); color: #A78BFA; }
+    .tag-mac { background: rgba(255, 255, 255, 0.12); color: #E2E8F0; }
+
+    .card-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .card-url {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-family: monospace;
+      font-size: 11.5px;
+      color: #E2E8F0;
+      word-break: break-all;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--violet);
+      color: #FFFFFF;
+    }
+    .btn-primary:hover {
+      background: var(--violet-hover);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .footer-note {
+      text-align: center;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      color: #64748B;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge-pill">● Redirección Rápida Multi-Servicio</div>
+      <h1><span class="dot">.</span>color<span class="tilde">í</span>o POP Studio</h1>
+      <p class="subtitle">Portal unificado de acceso directo a todas las web apps, panel de gestión, repositorio GitHub y herramientas locales.</p>
+    </header>
+
+    <div class="grid">
+      <!-- 1. Vercel Producción Landing -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <div class="card-icon">🌟</div>
+            <div class="card-title-group">
+              <h2>Landing Oficial</h2>
+              <span class="card-tag tag-live">Producción Web</span>
+            </div>
+          </div>
+          <p class="card-body">Página de inicio comercial con abanico interactivo 3D de fondo, showcase de productos y llamada a la acción.</p>
+          <div class="card-url">https://pop-mockup-studio.vercel.app</div>
+        </div>
+        <a href="https://pop-mockup-studio.vercel.app" target="_blank" rel="noopener" class="btn-action btn-primary">
+          Abrir en Navegador ↗
+        </a>
+      </div>
+
+      <!-- 2. Catálogo POP Directo -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <div class="card-icon">📋</div>
+            <div class="card-title-group">
+              <h2>Catálogo POP Directo</h2>
+              <span class="card-tag tag-live">Tienda en Línea</span>
+            </div>
+          </div>
+          <p class="card-body">Vista directa al catálogo de productos POP reales (abanicos flexibles, bolsas ecológicas, coolers y botellas).</p>
+          <div class="card-url">https://pop-mockup-studio.vercel.app/catalogo</div>
+        </div>
+        <a href="https://pop-mockup-studio.vercel.app/catalogo" target="_blank" rel="noopener" class="btn-action btn-primary">
+          Ver Catálogo ↗
+        </a>
+      </div>
+
+      <!-- 3. Simulador / Estudio POP -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <div class="card-icon">🎨</div>
+            <div class="card-title-group">
+              <h2>Simulador de Mockups</h2>
+              <span class="card-tag tag-live">Personalizador</span>
+            </div>
+          </div>
+          <p class="card-body">Estudio interactivo: sube tu logo, rota, ajusta colores, calcula precios por escala y descarga fichas PNG de aprobación.</p>
+          <div class="card-url">https://pop-mockup-studio.vercel.app/?view=studio</div>
+        </div>
+        <a href="https://pop-mockup-studio.vercel.app/?view=studio" target="_blank" rel="noopener" class="btn-action btn-primary">
+          Entrar al Simulador ↗
+        </a>
+      </div>
+
+      <!-- 4. Panel de Gestión Superadmin -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <div class="card-icon">🔐</div>
+            <div class="card-title-group">
+              <h2>Panel de Gestión (Superadmin)</h2>
+              <span class="card-tag tag-admin">Administración</span>
+            </div>
+          </div>
+          <p class="card-body">CRUD de productos, cupones, liquidación de vendedores, referidos, IVA (16%), comisiones y enlaces rastreables.<br><strong style="color:#C0EE00;">Usuario:</strong> peoplecreativaca@gmail.com | <strong style="color:#C0EE00;">Clave:</strong> 1234</p>
+          <div class="card-url">https://pop-mockup-studio.vercel.app/?admin=1</div>
+        </div>
+        <a href="https://pop-mockup-studio.vercel.app/?admin=1" target="_blank" rel="noopener" class="btn-action btn-primary">
+          Abrir Superadmin ↗
+        </a>
+      </div>
+
+      <!-- 5. Repositorio GitHub en la Web -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <div class="card-icon">🐙</div>
+            <div class="card-title-group">
+              <h2>Repositorio GitHub (Web)</h2>
+              <span class="card-tag tag-repo">Código Fuente</span>
+            </div>
+          </div>
+          <p class="card-body">Repositorio en la nube con historial de commits, CI/CD de GitHub Actions y pestaña de releases para descarga de binarios.</p>
+          <div class="card-url">https://github.com/burerex/pop-mockup-studio</div>
+        </div>
+        <a href="https://github.com/burerex/pop-mockup-studio" target="_blank" rel="noopener" class="btn-action btn-secondary">
+          Ver en GitHub ↗
+        </a>
+      </div>
+
+      <!-- 6. Vercel Dashboard -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <div class="card-icon">☁️</div>
+            <div class="card-title-group">
+              <h2>Consola Vercel (Cloud)</h2>
+              <span class="card-tag tag-cloud">Infraestructura</span>
+            </div>
+          </div>
+          <p class="card-body">Gestión de despliegues, dominios personalizados, variables de entorno, analíticas Edge y registros en vivo.</p>
+          <div class="card-url">https://vercel.com/burerexs-projects/pop-mockup-studio</div>
+        </div>
+        <a href="https://vercel.com/burerexs-projects/pop-mockup-studio" target="_blank" rel="noopener" class="btn-action btn-secondary">
+          Abrir Consola Vercel ↗
+        </a>
+      </div>
+
+      <!-- 7. Repositorio Local en tu Mac -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <div class="card-icon">📂</div>
+            <div class="card-title-group">
+              <h2>Carpeta Local del Proyecto</h2>
+              <span class="card-tag tag-mac">Finder / Disco</span>
+            </div>
+          </div>
+          <p class="card-body">Enlace directo a la carpeta del proyecto en tu Mac sincronizada bidireccionalmente con Git y el escritorio.</p>
+          <div class="card-url">~/Projects/pop-mockup-studio</div>
+        </div>
+        <a href="./Abrir-Repositorio-Local-Finder.command" class="btn-action btn-secondary">
+          Abrir en Finder 📂
+        </a>
+      </div>
+
+      <!-- 8. App Nativa macOS Offline -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <div class="card-icon">🍏</div>
+            <div class="card-title-group">
+              <h2>App Nativa para Mac (.app)</h2>
+              <span class="card-tag tag-mac">Escritorio Offline</span>
+            </div>
+          </div>
+          <p class="card-body">Aplicación de escritorio independiente con aceleración GPU por hardware, sin requerir internet ni servidores activos.</p>
+          <div class="card-url">Colorio POP Studio.app</div>
+        </div>
+        <a href="../versiones/1-version-mac/Iniciar-App-Mac.command" class="btn-action btn-secondary">
+          Ejecutar App Nativa 🍏
+        </a>
+      </div>
+
+      <!-- 9. Versión Web Offline 1-Clic -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <div class="card-icon">💻</div>
+            <div class="card-title-group">
+              <h2>Web Local Offline (1-Clic)</h2>
+              <span class="card-tag tag-live">0 MB RAM</span>
+            </div>
+          </div>
+          <p class="card-body">Carga la aplicación directamente en Safari o Chrome desde los archivos locales sin procesos Node consumiendo memoria.</p>
+          <div class="card-url">abrir-en-navegador.html</div>
+        </div>
+        <a href="../versiones/4-version-web-local-simple/abrir-en-navegador.html" class="btn-action btn-secondary">
+          Cargar Web Offline 💻
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      Por <strong>People Creativa, C.A.</strong> para <strong>Colorio Merchandising</strong> (@holacolorio) · Suite 2026
+    </div>
+  </div>
+</body>
+</html>
